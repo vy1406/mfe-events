@@ -1,11 +1,21 @@
 import React from 'react';
+import { createRoot } from 'react-dom/client';
+import App from './App';
 
-const App = () => {
-  return (
-    <div>
-      <h1>React App</h1>
-    </div>
-  );
+const mount = (el) => {
+    const root = createRoot(el); 
+    root.render(
+        <React.StrictMode>
+            <App />
+        </React.StrictMode>
+    );
 };
 
-export default App;
+if (process.env.NODE_ENV === "development") {
+    const rootNode = document.querySelector("#root");
+    if (rootNode) {
+        mount(rootNode); 
+    }
+}
+
+export { mount };

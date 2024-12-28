@@ -6,12 +6,12 @@ module.exports = (env) => ({
   mode: env.production ? 'production' : 'development',
   entry: './src/index.js',
   output: {
-    publicPath: env.production ? '/react/' : 'http://localhost:3200/',
+    publicPath: env.production ? '/react/' : 'http://localhost:4200/',
     path: path.resolve(__dirname, 'dist'),
     clean: true,
   },
   devServer: {
-    port: 3200,
+    port: 4200,
   },
   module: {
     rules: [
@@ -30,7 +30,7 @@ module.exports = (env) => ({
       name: 'reactApp',
       filename: 'remoteEntry.js',
       exposes: {
-        './App': './src/bootstrap.js',
+        './App': './src/bootstrap',
       },
     }),
   ],
