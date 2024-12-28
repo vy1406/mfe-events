@@ -76,7 +76,7 @@
           },
           "defaultConfiguration": "development",
           "options": {
-            "port": 3100,
+            "port": 4100,
             "browserTarget": "angularApp:build"
           }
         },

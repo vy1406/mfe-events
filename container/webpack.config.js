@@ -29,7 +29,7 @@ module.exports = (env) => ({
     new ModuleFederationPlugin({
       name: 'container',
       remotes: {
-        // angularApp: 'angularApp@http://localhost:3100/remoteEntry.js',
+        angularApp: 'angularApp@http://localhost:4100/remoteEntry.js',
         reactApp: 'reactApp@http://localhost:4200/remoteEntry.js',
         // vueApp: 'vueApp@http://localhost:3300/remoteEntry.js',
       },
