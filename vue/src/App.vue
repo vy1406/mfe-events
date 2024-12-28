@@ -1,6 +1,6 @@
 <template>
   <div>
-    <h1>Vue asdasdasdasdasd</h1>
+    <h1>Vue App</h1>
   </div>
 </template>
 

@@ -1,4 +1,4 @@
-const { defineConfig } = require('@vue/cli-service')
+const { defineConfig } = require('@vue/cli-service');
 const { ModuleFederationPlugin } = require('webpack').container;
 
 module.exports = defineConfig({
@@ -10,17 +10,11 @@ module.exports = defineConfig({
         filename: 'remoteEntry.js',
         exposes: {
           './App': './src/App.vue', 
-        },
-        shared: {
-          vue: {
-            singleton: true,
-            requiredVersion: '^3.0.0',
-          },
-        },
+        }
       }),
     ],
   },
   devServer: {
     port: 3300, 
   },
-})
+});
