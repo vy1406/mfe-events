@@ -4,23 +4,21 @@ const { ModuleFederationPlugin } = require('webpack').container;
 module.exports = defineConfig({
   transpileDependencies: true,
   publicPath: "http://localhost:4300/",
-  
   configureWebpack: {
     optimization: {
-      runtimeChunk: false,
+      splitChunks: false
     },
     plugins: [
       new ModuleFederationPlugin({
-        name: 'vue_app',
+        name: 'vueApp',
         filename: 'remoteEntry.js',
         exposes: {
-          './vueApp': './src/main.js', 
+          './vueApp': './src/main.js',
         },
-        shared: require('./package.json').dependencies,
       }),
     ],
   },
   devServer: {
-    port: 4300, 
+    port: 4300,
   },
 });
