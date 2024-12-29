@@ -1,4 +1,15 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 
-createApp(App).mount('#vue_id')
+const mount = (el) => {
+    createApp(App).mount(el);
+  };
+
+if (process.env.NODE_ENV === "development") {
+    const rootNode = document.querySelector("#vue_app");
+    if (rootNode) {
+        mount(rootNode);
+    }
+}
+
+export {mount};

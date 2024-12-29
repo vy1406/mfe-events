@@ -1,10 +1,8 @@
 import React, { lazy, Suspense } from 'react';
 
-// const AngularApp = React.lazy(() => import('angularApp/App'));
-// const ReactApp = React.lazy(() => import('reactApp/App'));
-// const VueApp = React.lazy(() => import('vueApp/App'));
 const ReactLazy = lazy(() => import('./modules/reactModule'))
 const AngularLazy = lazy(() => import('./modules/angularModule'))
+const VueApp = lazy(() => import('./modules/vueModule'))
 
 const App = () => {
   return (
@@ -24,11 +22,11 @@ const App = () => {
         </div>
       </Suspense>
 
-      {/* <Suspense fallback={<div>Loading Vue App...</div>}>
+      <Suspense fallback={<div>Loading Vue App...</div>}>
         <div id="vue-app">
           <VueApp />
         </div>
-      </Suspense> */}
+      </Suspense>
 
     </div>
   );

@@ -31,7 +31,7 @@ module.exports = (env) => ({
       remotes: {
         angularApp: 'angularApp@http://localhost:4100/remoteEntry.js',
         reactApp: 'reactApp@http://localhost:4200/remoteEntry.js',
-        // vueApp: 'vueApp@http://localhost:3300/remoteEntry.js',
+        vueApp: 'vueApp@http://localhost:4300/remoteEntry.js',
       },
     }),
   ],

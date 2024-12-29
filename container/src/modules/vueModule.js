@@ -1,7 +1,7 @@
 import React, { useRef, useEffect } from 'react';
-import { mount } from 'reactApp/App';
+import { mount } from 'vueApp/vueApp';
 
-const ReactApp = () => {
+const VueApp = () => {
     const ref = useRef(null)
 
     useEffect(() => {
@@ -11,5 +11,4 @@ const ReactApp = () => {
     return <div ref={ref} />
 }
 
-
-export default ReactApp;
+export default VueApp;

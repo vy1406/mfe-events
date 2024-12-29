@@ -3,9 +3,11 @@ import { mount } from "angularApp/angularApp";
 
 const AngularApp = () => {
     const ref = useRef(null);
+
     useEffect(() => {
         mount();
     }, []);
+    
     return <div ><app-root></app-root></div>;
 };
 
