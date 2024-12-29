@@ -27,17 +27,17 @@ function _toPropertyKey(t) {
   return "symbol" == typeof i ? i : i + "";
 }
 
-var EventBus = /*#__PURE__*/function () {
-  function EventBus() {
-    _classCallCheck(this, EventBus);
-    if (!EventBus.instance) {
-      console.log('EventBus: Singleton instance created');
+var MessageBus = /*#__PURE__*/function () {
+  function MessageBus() {
+    _classCallCheck(this, MessageBus);
+    if (!MessageBus.instance) {
+      console.log('MessageBus Singleton Created');
       this.listeners = {};
-      EventBus.instance = this;
+      MessageBus.instance = this;
     }
-    return EventBus.instance;
+    return MessageBus.instance;
   }
-  return _createClass(EventBus, [{
+  return _createClass(MessageBus, [{
     key: "subscribe",
     value: function subscribe(eventType, callback) {
       if (!this.listeners[eventType]) {
@@ -65,7 +65,7 @@ var EventBus = /*#__PURE__*/function () {
     }
   }]);
 }();
-var eventBus = new EventBus();
+var eventBus = new MessageBus();
 
-export { eventBus as default };
+export { MessageBus, eventBus };
 //# sourceMappingURL=index.esm.js.map

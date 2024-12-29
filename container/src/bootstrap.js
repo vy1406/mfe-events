@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import './style.css';
 import AllApps from './components/allApps';
-import eventBus from 'event-bus';
-
+import {eventBus} from 'event-bus';
 
 
 const App = () => {

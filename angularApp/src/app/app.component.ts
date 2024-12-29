@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {eventBus} from 'event-bus';
 
 @Component({
   selector: 'app-root',
@@ -20,6 +21,11 @@ export class AppComponent {
     console.log("Custom event fired");
     window.dispatchEvent(this.customEvent);
   }
+
+  onEventBus = () => {
+    eventBus.publish('customEventBusEvent', { message: 'Event Bus', remote: 'AngularApp' });
+  }
+  
 }
 
 

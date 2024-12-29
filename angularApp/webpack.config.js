@@ -47,7 +47,7 @@ module.exports = {
           "@angular/common": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/common/http": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
           "@angular/router": { singleton: true, strictVersion: true, requiredVersion: 'auto' },
-
+          'event-bus': { singleton: true, eager: false, requiredVersion: '1.0.0' },
           ...sharedMappings.getDescriptors()
         })
 
