@@ -32,6 +32,7 @@ module.exports = (env) => ({
     }),
     new ModuleFederationPlugin({
       name: 'container',
+      filename: 'remoteEntry.js',
       remotes: {
         angularApp: 'angularApp@http://localhost:4100/remoteEntry.js',
         reactApp: 'reactApp@http://localhost:4200/remoteEntry.js',
@@ -39,9 +40,14 @@ module.exports = (env) => ({
       },
       exposes: {
         './eventBus': 'event-bus',
+        './store': './src/store/store.js',
       },
       shared: {
         'event-bus': { singleton: true, eager: true, requiredVersion: '1.0.0' },
+        '@reduxjs/toolkit': { singleton: true, requiredVersion: '^1.9.0', eager: true },
+        'react-redux': { singleton: true, requiredVersion: '^8.1.0', eager: true},
+        react: { singleton: true, requiredVersion: '19.0.0', eager: true },
+        'react-dom': { singleton: true, requiredVersion: '19.0.0', eager: true },
       },
     }),
   ],
