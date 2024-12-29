@@ -3,9 +3,12 @@
     <h1>Vue App</h1>
   </div>
   <button @click="dispatchCustomEvent">custom event</button>
+  <button @click="dispatchEventBus">event bus</button>
 </template>
 
 <script>
+import { eventBus } from 'event-bus';
+
 export default {
   methods: {
     dispatchCustomEvent() {
@@ -16,6 +19,9 @@ export default {
         },
       });
       window.dispatchEvent(customEvent); 
+    },
+    dispatchEventBus() {
+      eventBus.publish('customEventBusEvent', { message: 'Event Bus', remote: 'VueApp' });
     },
   }
 };

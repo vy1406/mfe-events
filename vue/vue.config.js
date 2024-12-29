@@ -15,6 +15,9 @@ module.exports = defineConfig({
         exposes: {
           './vueApp': './src/main.js',
         },
+        shared: {
+          'event-bus': { singleton: true, eager: false, requiredVersion: '1.0.0' },
+        },
       }),
     ],
   },
