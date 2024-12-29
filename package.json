@@ -1,0 +1,15 @@
+{
+  "name": "root",
+  "private": true,
+  "scripts": {
+    "install:all": "lerna exec -- npm install",
+    "start:all": "concurrently \"lerna run start --scope container\" \"lerna run start --scope reactApp\" \"lerna run start --scope vue\" \"lerna run start --scope angularApp\""
+  },
+  "workspaces": [
+    "packages/*"
+  ],
+  "devDependencies": {
+    "concurrently": "^9.1.1",
+    "lerna": "^8.1.9"
+  }
+}

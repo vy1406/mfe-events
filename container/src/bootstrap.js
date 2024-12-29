@@ -1,20 +1,20 @@
 import React, { lazy, Suspense } from 'react';
 
-const ReactLazy = lazy(() => import('./modules/reactModule'))
-const AngularLazy = lazy(() => import('./modules/angularModule'))
-const VueApp = lazy(() => import('./modules/vueModule'))
+const withErrorBoundary = (importFunc, fallbackMessage) => {
+  return lazy(() =>
+    importFunc().catch(() => {
+      return { default: () => <div>{fallbackMessage}</div> };
+    })
+  );
+};
 
-// const VueApp2 = lazy(() =>
-//   import('vueApp/vueApp').catch((err) => {
-//     console.error("Failed to load VueApp:", err);
-//     return { default: () => <div>Failed to load Vue App</div> };
-//   })
-// );
+const ReactLazy = withErrorBoundary(() => import('./modules/reactModule'), 'React Component Unavailable!');
+const AngularLazy = withErrorBoundary(() => import('./modules/angularModule'), 'Angular Component Unavailable!');
+const VueApp = withErrorBoundary(() => import('./modules/vueModule'), 'Vue Component Unavailable!');
 
 const App = () => {
   return (
     <div>
-      {/* <VueApp2 /> */}
       <h1>Container App</h1>
 
       <Suspense fallback={<div>Loading Angular App...</div>}>
