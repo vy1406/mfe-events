@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './style.css';
 import AllApps from './components/allApps';
-import messageBus from './messageBus';
 
 
 const App = () => {
@@ -12,15 +11,8 @@ const App = () => {
     };
 
     window.addEventListener('customEventName', handleCustomEvent);
-    const handleDataUpdate = (data) => {
-      debugger;
-      console.log("Data received in container app: ", data)
-    };
-
-    messageBus.subscribe('planetData', handleDataUpdate);
 
     return () => {
-      messageBus.unsubscribe('planetData', handleDataUpdate);
       window.removeEventListener('customEventName', handleCustomEvent);
     };
 

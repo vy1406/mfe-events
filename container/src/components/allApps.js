@@ -1,7 +1,5 @@
 import React, { lazy, Suspense } from 'react';
 import '../style.css';
-import messageBus from '../messageBus';
-import { useEffect } from 'react';
 
 const withErrorBoundary = (importFunc, fallbackMessage) => {
     return lazy(() =>
@@ -17,21 +15,6 @@ const VueApp = withErrorBoundary(() => import('../modules/vueModule'), 'Vue Comp
 
 const AllApps = () => {
 
-    useEffect(() => {
-
-    
-        const handleDataUpdate = (data) => {
-          console.log("Data received in container app: ", data)
-        };
-    
-        messageBus.subscribe('planetData', handleDataUpdate);
-    
-        return () => {
-          messageBus.unsubscribe('planetData', handleDataUpdate);
-        };
-    
-    
-      }, []);
     
     return (
 
