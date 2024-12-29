@@ -1,4 +1,5 @@
 import React, { lazy, Suspense } from 'react';
+import './style.css';
 
 const withErrorBoundary = (importFunc, fallbackMessage) => {
   return lazy(() =>
@@ -14,27 +15,30 @@ const VueApp = withErrorBoundary(() => import('./modules/vueModule'), 'Vue Compo
 
 const App = () => {
   return (
-    <div>
+    <div className='container'>
       <h1>Container App</h1>
 
+      <div className='container-apps'>
+
       <Suspense fallback={<div>Loading Angular App...</div>}>
-        <div id="angular-app">
+        <div className="angular">
           <AngularLazy />
         </div>
       </Suspense>
 
 
       <Suspense fallback={<div>Loading React App...</div>}>
-        <div id="react-app">
+        <div className="react">
           <ReactLazy />
         </div>
       </Suspense>
 
       <Suspense fallback={<div>Loading Vue App...</div>}>
-        <div id="vue-app2">
+        <div className="vue">
           <VueApp />
         </div>
       </Suspense>
+      </div>
 
     </div>
   );
