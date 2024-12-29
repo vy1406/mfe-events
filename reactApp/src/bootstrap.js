@@ -1,12 +1,16 @@
 import React from 'react';
 import { createRoot } from 'react-dom/client';
+import { Provider } from 'react-redux';
+import store from 'container/store';
 import App from './App';
 
 const mount = (el) => {
-    const root = createRoot(el); 
+    const root = createRoot(el);
     root.render(
         <React.StrictMode>
-            <App />
+            <Provider store={store.store}>
+                <App />
+            </Provider>
         </React.StrictMode>
     );
 };
@@ -14,7 +18,7 @@ const mount = (el) => {
 if (process.env.NODE_ENV === "development") {
     const rootNode = document.querySelector("#root");
     if (rootNode) {
-        mount(rootNode); 
+        mount(rootNode);
     }
 }
 

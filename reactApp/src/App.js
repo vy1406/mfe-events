@@ -1,7 +1,15 @@
 import React from 'react'
 import { eventBus } from 'event-bus';
+import { useDispatch } from 'react-redux';
+import store from 'container/store';
 
 const App = () => {
+
+  const dispatch = useDispatch();
+
+  const handleReduxEvent = () => {
+    dispatch(store.dispatchEvent({ message: 'Redux Event', remote: 'ReactApp' }));
+  };
 
   const customEvent = new CustomEvent('customEventName', {
     detail: {
@@ -28,6 +36,9 @@ const App = () => {
       </button>
       <button onClick={() => handleEventBusEvent()}>
         event bus
+      </button>
+      <button onClick={() => handleReduxEvent()}>
+        redux event
       </button>
     </div>
   );
