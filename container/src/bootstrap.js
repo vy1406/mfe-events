@@ -1,20 +1,10 @@
-import React, { lazy, Suspense, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import './style.css';
+import AllApps from './components/allApps';
+import messageBus from './messageBus';
 
-const withErrorBoundary = (importFunc, fallbackMessage) => {
-  return lazy(() =>
-    importFunc().catch(() => {
-      return { default: () => <div>{fallbackMessage}</div> };
-    })
-  );
-};
-
-const ReactLazy = withErrorBoundary(() => import('./modules/reactModule'), 'React Component Unavailable!');
-const AngularLazy = withErrorBoundary(() => import('./modules/angularModule'), 'Angular Component Unavailable!');
-const VueApp = withErrorBoundary(() => import('./modules/vueModule'), 'Vue Component Unavailable!');
 
 const App = () => {
-  
 
   useEffect(() => {
     const handleCustomEvent = (e) => {
@@ -22,37 +12,26 @@ const App = () => {
     };
 
     window.addEventListener('customEventName', handleCustomEvent);
+    const handleDataUpdate = (data) => {
+      debugger;
+      console.log("Data received in container app: ", data)
+    };
+
+    messageBus.subscribe('planetData', handleDataUpdate);
 
     return () => {
+      messageBus.unsubscribe('planetData', handleDataUpdate);
       window.removeEventListener('customEventName', handleCustomEvent);
     };
+
+
   }, []);
 
   return (
     <div className='container' id='container_id'>
       <h1>Container App</h1>
 
-      <div className='container-apps'>
-
-        <Suspense fallback={<div>Loading Angular App...</div>}>
-          <div className="angular">
-            <AngularLazy />
-          </div>
-        </Suspense>
-
-
-        <Suspense fallback={<div>Loading React App...</div>}>
-          <div className="react">
-            <ReactLazy />
-          </div>
-        </Suspense>
-
-        <Suspense fallback={<div>Loading Vue App...</div>}>
-          <div className="vue">
-            <VueApp />
-          </div>
-        </Suspense>
-      </div>
+      <AllApps />
 
     </div>
   );

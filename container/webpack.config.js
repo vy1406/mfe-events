@@ -20,7 +20,7 @@ module.exports = (env) => ({
         use: ["style-loader", "css-loader"],
       },
       {
-        test: /\.(js|jsx)$/,
+        test: /\.(js|jsx|ts)$/,
         exclude: /node_modules/,
         loader: 'babel-loader'
       }
@@ -28,7 +28,7 @@ module.exports = (env) => ({
   },
   plugins: [
     new HtmlWebpackPlugin({
-        template: path.resolve(__dirname, 'public/index.html'),
+      template: path.resolve(__dirname, 'public/index.html'),
     }),
     new ModuleFederationPlugin({
       name: 'container',
@@ -37,6 +37,7 @@ module.exports = (env) => ({
         reactApp: 'reactApp@http://localhost:4200/remoteEntry.js',
         vueApp: 'vueApp@http://localhost:4300/remoteEntry.js',
       },
+
     }),
   ],
 });
