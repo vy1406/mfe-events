@@ -39,6 +39,9 @@ module.exports = (env) => ({
       exposes: {
         './App': './src/bootstrap',
       },
+      shared: {
+        'event-bus': { singleton: true, eager: false, requiredVersion: '1.0.0' },
+      },
     }),
   ],
 });

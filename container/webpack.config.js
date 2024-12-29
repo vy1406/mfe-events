@@ -37,7 +37,12 @@ module.exports = (env) => ({
         reactApp: 'reactApp@http://localhost:4200/remoteEntry.js',
         vueApp: 'vueApp@http://localhost:4300/remoteEntry.js',
       },
-
+      exposes: {
+        './eventBus': 'event-bus',
+      },
+      shared: {
+        'event-bus': { singleton: true, eager: true, requiredVersion: '1.0.0' },
+      },
     }),
   ],
 });

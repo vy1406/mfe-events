@@ -3,7 +3,8 @@
   "private": true,
   "scripts": {
     "install:all": "lerna exec -- npm install",
-    "start:all": "concurrently \"lerna run start --scope container\" \"lerna run start --scope reactApp\" \"lerna run start --scope vue\" \"lerna run start --scope angularApp\""
+    "start:all": "concurrently \"lerna run start --scope container\" \"lerna run start --scope reactApp\" \"lerna run start --scope vue\" \"lerna run start --scope angularApp\"",
+    "build-event-bus": "lerna exec --scope event-bus -- npm run build"
   },
   "workspaces": [
     "packages/*"

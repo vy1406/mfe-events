@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import '../style.css';
 
+
 const withErrorBoundary = (importFunc, fallbackMessage) => {
     return lazy(() =>
         importFunc().catch(() => {
@@ -15,7 +16,6 @@ const VueApp = withErrorBoundary(() => import('../modules/vueModule'), 'Vue Comp
 
 const AllApps = () => {
 
-    
     return (
 
         <div className='container-apps'>
