@@ -11,14 +11,11 @@ const App = () => {
     dispatch(store.dispatchEvent({ message: 'Redux Event', remote: 'ReactApp' }));
   };
 
-  const customEvent = new CustomEvent('customEventName', {
-    detail: {
-      message: 'Custom event',
-      remote: 'ReactApp'
-    }
-  });
 
   const handleDispatchCustomEvent = () => {
+    const customEvent = new CustomEvent('customEventName', {
+      detail: { message: 'Custom event', remote: 'ReactApp' }
+    });
     window.dispatchEvent(customEvent);
   }
 
