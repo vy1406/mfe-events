@@ -14,11 +14,13 @@ const App = () => {
     window.alert(customEvent.message + ' | ' + customEvent.remote);
   }
 
+
   useEffect(() => {
 
     window.addEventListener('customEventName', handleCustomEvent);
 
     eventBus.subscribe('customEventBusEvent', handlePackageEventBus);
+
 
     return () => {
       window.removeEventListener('customEventName', handleCustomEvent);

@@ -16,7 +16,6 @@ export class AppComponent {
     }
   });
   
-
   onCustomEvent = () => {
     console.log("Custom event fired");
     window.dispatchEvent(this.customEvent);
@@ -24,6 +23,10 @@ export class AppComponent {
 
   onEventBus = () => {
     eventBus.publish('customEventBusEvent', { message: 'Event Bus', remote: 'AngularApp' });
+  }
+  onStorageEvent = () => {
+    localStorage.setItem('storageEvent', JSON.stringify({ message: 'Storage Event', remote: 'AngularApp' }));
+    window.alert('Storage Event | AngularApp');
   }
   
 }

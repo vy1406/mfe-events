@@ -4,6 +4,7 @@
   </div>
   <button @click="dispatchCustomEvent">custom event</button>
   <button @click="dispatchEventBus">event bus</button>
+  <button @click="saveLocalStorage">storage event</button>
 </template>
 
 <script>
@@ -23,6 +24,10 @@ export default {
     dispatchEventBus() {
       eventBus.publish('customEventBusEvent', { message: 'Event Bus', remote: 'VueApp' });
     },
+    saveLocalStorage() {
+      localStorage.setItem('storageEvent', JSON.stringify({ message: 'Storage Event', remote: 'VueApp' }));
+      window.alert('Storage Event | VueApp');
+    }
   }
 };
 </script>

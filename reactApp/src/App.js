@@ -18,6 +18,11 @@ const App = () => {
     eventBus.publish('customEventBusEvent', { message: 'Event Bus', remote: 'ReactApp' });
   }
 
+  const handleStorageEvent = () => {
+    localStorage.setItem('storageEvent', JSON.stringify({ message: 'Storage Event', remote: 'ReactApp' }));
+    window.alert('Storage Event | ReactApp');
+    // Now you get the data from localsotrage in the container app
+  }
 
   return (
     <div>
@@ -28,6 +33,9 @@ const App = () => {
       </button>
       <button onClick={() => handleEventBusEvent()}>
         event bus
+      </button>
+      <button onClick={() => handleStorageEvent()}>
+        storage event
       </button>
     </div>
   );
