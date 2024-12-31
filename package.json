@@ -1,16 +1,25 @@
 {
-  "name": "root",
+  "name": "monorepo",
   "private": true,
   "scripts": {
-    "install:all": "lerna exec -- npm install",
-    "start:all": "concurrently \"lerna run start --scope container\" \"lerna run start --scope reactApp\" \"lerna run start --scope vue\" \"lerna run start --scope angularApp\"",
-    "build-event-bus": "lerna exec --scope event-bus -- npm run build"
+    "install:all": "npm run install:apps && npm run install:event-bus",
+    "install:apps": "npm run install:container && npm run install:react && npm run install:vue && npm run install:angular",
+    "install:container": "cd apps/container && npm install",
+    "install:react": "cd apps/reactApp && npm install",
+    "install:vue": "cd apps/vueApp && npm install",
+    "install:angular": "cd apps/angularApp && npm install",
+    "install:event-bus": "cd event-bus && npm install",
+
+    "build:event-bus": "cd event-bus && npm run build",
+
+    "start:all": "concurrently \"npm run start:container\" \"npm run start:react\" \"npm run start:vue\" \"npm run start:angular\"",
+    "start:remotes": "concurrently \"npm run start:react\" \"npm run start:vue\" \"npm run start:angular\"",
+    "start:container": "cd apps/container && npm start",
+    "start:react": "cd apps/reactApp && npm start",
+    "start:vue": "cd apps/vueApp && npm start",
+    "start:angular": "cd apps/angularApp && npm start"
   },
-  "workspaces": [
-    "packages/*"
-  ],
   "devDependencies": {
-    "concurrently": "^9.1.1",
-    "lerna": "^8.1.9"
+    "concurrently": "^9.1.1"
   }
 }

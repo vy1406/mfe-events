@@ -14,7 +14,7 @@
     "html-webpack-plugin": "^5.6.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
-    "event-bus": "1.0.0"
+    "event-bus": "file:../../event-bus"
   },
   "devDependencies": {
     "@babel/core": "^7.26.0",
